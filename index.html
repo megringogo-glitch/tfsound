@@ -1,3 +1,11 @@
+<button id="playButton" onclick="togglePlay()">再生 / 停止</button>
+
+<h3>高調波振幅コントロール (1倍 〜 10倍)</h3>
+<div id="controls">
+    </div>
+
+<script>
+    // 2.のJavaScriptコードをここに配置
 // パラメータ
 const fundamentalFrequency = 440; // 基本周波数 (f0)
 const harmonics = 10;             // 合成する高調波の数 (1倍から10倍)
@@ -37,3 +45,4 @@ function createSynth() {
         gains.push(gainNode);
     }
 }
+</script>
