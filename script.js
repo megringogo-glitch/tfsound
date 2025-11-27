@@ -4,7 +4,7 @@ const incorrectButton = document.getElementById('incorrect-button');
 
 // ② Audioオブジェクトを作成（音声をメモリにロード）
 // ファイル名: seikai.mp3 と machigai.mp3 があると仮定します。
-const correctSound = new Audio('seikai.mp3'); 
+const correctSound = new Audio('seikai.m4a'); 
 const incorrectSound = new Audio('machigai.mp3');
 
 /**
