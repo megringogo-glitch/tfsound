@@ -1,0 +1,39 @@
+// パラメータ
+const fundamentalFrequency = 440; // 基本周波数 (f0)
+const harmonics = 10;             // 合成する高調波の数 (1倍から10倍)
+
+// 高調波とゲインノードを保持する配列
+const oscillators = [];
+const gains = [];
+
+// メインの処理
+function createSynth() {
+    // 既存のノードがあれば停止・解除
+    oscillators.forEach(osc => osc.stop());
+    oscillators.length = 0;
+    gains.length = 0;
+
+    for (let k = 1; k <= harmonics; k++) {
+        // 1. オシレーターノード (サイン波)
+        const osc = audioContext.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(fundamentalFrequency * k, audioContext.currentTime);
+
+        // 2. ゲインノード (振幅制御)
+        const gainNode = audioContext.createGain();
+        
+        // 振幅を設定（例: ノコギリ波的な減衰、全体を0.1でスケーリング）
+        // ユーザーがこの値を変更できるようにするのがアプリの核になります
+        const amplitude = (1 / k) * 0.1; 
+        gainNode.gain.setValueAtTime(amplitude, audioContext.currentTime);
+
+        // 3. 接続
+        // オシレーター -> ゲイン -> 出力
+        osc.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        // 配列に格納
+        oscillators.push(osc);
+        gains.push(gainNode);
+    }
+}
