@@ -3,7 +3,6 @@ const correctButton = document.getElementById('correct-button');
 const incorrectButton = document.getElementById('incorrect-button');
 
 // ② Audioオブジェクトを作成（音声をメモリにロード）
-// ファイル名: seikai.mp3 と machigai.mp3 があると仮定します。
 const correctSoundFiles = [
     'voice/seikai-Tanji.m4a',
     'voice/seikai-Nakane.m4a',
@@ -21,9 +20,9 @@ const incorrectSoundFiles = [
     'voice/hazure-iimura3.m4a',
     'voice/hazure-Fujimoto.m4a',
     'voice/hazure-Sugimoto.m4a',
-    'voice/hazure-Usami.m4a',       
+    'voice/hazure-Usami.m4a',
     'voice/hazure-Ohashi.m4a',
-    'voice/hazure-Usami.m4a',       
+    'voice/hazure-Usami.m4a',
     'voice/hazure-Akutsu.m4a',
     'voice/hazure.m4a'
 ];
