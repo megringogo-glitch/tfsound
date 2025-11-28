@@ -4,14 +4,28 @@ const incorrectButton = document.getElementById('incorrect-button');
 
 // ② Audioオブジェクトを作成（音声をメモリにロード）
 // ファイル名: seikai.mp3 と machigai.mp3 があると仮定します。
-const correctSound = new Audio('voice/seikai-Tanji.m4a'); 
-const incorrectSound = new Audio('voice/hazure-Tanji.m4a');
+const correctSoundFiles = [
+    'voice/seikai-Tanji.m4a',
+    'voice/seikai-Nakane.m4a',
+    'voice/seikai.m4a',  
+]; 
+const incorrectSoundFiles = [
+    'voice/hazure-Tanji.m4a',
+    'voice/hazure-Nakane.m4a',
+    'voice/hazure-iimura1.m4a',
+    'voice/hazure-iimura2.m4a',
+    'voice/hazure-iimura3.m4a',
+    'voice/hazure.m4a',
+];
 
 /**
  * 音声を再生する関数
- * @param {HTMLAudioElement} audioObject - 再生したいAudioオブジェクト
+ * @param {string} soundFile - 再生したい音声ファイルのパス
  */
-function playSound(audioObject) {
+function playSound(soundFile) {
+    //再生時に新しいAudioオブジェクトを作成
+    const audioObject = new Audio(soundFile);
+    
     // 💡 注意点: 再生中にボタンが再度押された場合、
     // 既に再生中の音声を停止してから最初から再生し直す処理が一般的です。
     audioObject.pause();
@@ -25,13 +39,21 @@ function playSound(audioObject) {
         });
 }
 
+//ランダムな音を選ぶ関数
+function getRandomSoundFile(fileList){
+    const randomIndex = Math.floor(Math.random() * FileList.length);
+    return FileList[randomIndex];
+}
+
 // ③ イベントリスナーを設定
 // 正解ボタンがクリックされたら正解音を再生
 correctButton.addEventListener('click', () => {
-    playSound(correctSound);
+    const randomFile = getRandomSoundFile(correctSoundFiles);
+    playSound(randomFile);
 });
 
 // 間違いボタンがクリックされたら間違い音を再生
 incorrectButton.addEventListener('click', () => {
+    const randomFile = getRandomSoundFile(incorrectSoundFiles);
     playSound(incorrectSound);
 });
