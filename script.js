@@ -23,7 +23,7 @@ const incorrectSoundFiles = [
     'voice/hazure-Sugimoto.m4a',
     'voice/hazure-Usami.m4a',       
     'voice/hazure-Ohashi.m4a',
-    'voice/hazure-Usami.m4a'       
+    'voice/hazure-Usami.m4a',       
     'voice/hazure-Akutsu.m4a',
     'voice/hazure.m4a'
 ];
